@@ -82,8 +82,7 @@ def cruza(Papa,Mama):
         Hijo_parteinicial.extend(Hijo)
         Hijo=Hijo_parteinicial
 
-    return Hijo
-
+    return Hijo        
 
 
 #Código
