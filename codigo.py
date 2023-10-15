@@ -1,6 +1,6 @@
 import random
-
-n=int(input('Ingrese la cantidad de individuos de la población: '))
+import matplotlib.pyplot
+from matplotlib.pyplot import plot,show,title,xlabel,ylabel
 
 #Funciones
 
@@ -100,12 +100,24 @@ def reemplazo(Pob):
 #  Código fuente
 
 #Inicialización de la poblacion
+n=int(input('Ingrese la cantidad de individuos de la población: '))
 Pob=inicializacion(n)
+
+print('\n', 'GENERACION 0')
+
+#Calculo de fitness
 all_fitness=[fitness(Pob[i]) for i in range(n)]
 print('\n', 'Sus fitness son:', '\n', all_fitness)
 
+#Lista que guardará el promedio del fitness de cada generación
+prom_fitness=[]
+s=0
+for i in range(n):
+    s = s + all_fitness[i]
+prom_fitness.append(s/n)
+
 for generation in range(20):
-    print('\n', 'GENERACION ', generation)
+    print('\n', 'GENERACION ', generation+1)
 
     #Seleccion de padres
     papa=seleccion(Pob)
@@ -125,6 +137,11 @@ for generation in range(20):
     all_fitness=[fitness(Pob[i]) for i in range(n)]
     print('\n', 'Sus fitness son:', '\n', all_fitness)
 
+    s=0
+    for i in range(n):
+        s = s + all_fitness[i]
+    prom_fitness.append(s/n)
+
 Mejores_ind=[]
 for i in Pob:
     if fitness(i)==min(all_fitness):
@@ -133,3 +150,12 @@ for i in Pob:
 print('\n', 'Los mejores individuos son: ')
 for i in range(len(Mejores_ind)):
     print('\n',Mejores_ind[i])
+
+print('\n', 'El promedio de fitness de cada generación es: ', prom_fitness)
+
+#Gráfica de convergencia
+plot(range(21),prom_fitness)
+title('Gráfica de convergencia del fitness')
+xlabel('generación')
+ylabel('promedio del fitness')
+show()
