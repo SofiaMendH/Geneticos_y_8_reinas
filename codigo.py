@@ -7,7 +7,7 @@ from matplotlib.pyplot import plot,show,title,xlabel,ylabel
 def inicializacion(n):
     Pob=[random.sample(range(8),8) for i in range(n)]
     return Pob
-
+ 
 def fitness(Individuo):
     fitness=0
     for i in range(8):
@@ -68,7 +68,7 @@ def cruza(Papa,Mama):
                 Hijo.insert(contador2,Mama[i])
                 contador2=contador2+1
     return Hijo       
-
+    
 def mutacion(Ind):
     punto_c1=random.randrange(8)
     punto_c2=random.randrange(8)
@@ -118,25 +118,25 @@ prom_fitness.append(s/n)
 
 for generation in range(20):
     print('\n', 'GENERACION ', generation+1)
-
+    
     #Seleccion de padres
     papa=seleccion(Pob)
     mama=seleccion(Pob)
     mama.reverse()
-
+    
     #Generacion de hijos por cruza
     Hijos=[cruza(papa[i], mama[i]) for i in range(25)]
-
+    
     #Mutacion de los hijos
     Hijos=[mutacion(Hijos[i]) for i in range(25)]
-
+    
     #Brecha generacional
     Pob=reemplazo(Pob)
-
+    
     #Nuevo fitness
     all_fitness=[fitness(Pob[i]) for i in range(n)]
     print('\n', 'Sus fitness son:', '\n', all_fitness)
-
+    
     s=0
     for i in range(n):
         s = s + all_fitness[i]
@@ -150,7 +150,7 @@ for i in Pob:
 print('\n', 'Los mejores individuos son: ')
 for i in range(len(Mejores_ind)):
     print('\n',Mejores_ind[i])
-
+    
 print('\n', 'El promedio de fitness de cada generación es: ', prom_fitness)
 
 #Gráfica de convergencia
