@@ -13,4 +13,15 @@
    |:----------------:|:----------------:|:-----------------------:|:-----------:|:----------:|:----------------------------:|
    | Permutación      | Aleatoria        | Universal estocástica   | Ordenada    | Mezcla     | Brecha generacional          |
 ### Descripción de los métodos de la tabla
-    - Repres
+    - **Representación:** Permutación
+        Este tipo de
+    - **Inicialización:** Aleatoria
+        Este tipo
+    - **Selección de padres:** Permutación
+        Este tipo de
+    - **Cruza:** Aleatoria
+        Este
+    - **Mutación:** Permutación
+        Este tipo de
+    - **Selección de descendientes:** Aleatoria
+        Bre
