@@ -31,9 +31,26 @@
    | Representación   | Inicialización   | Selección de padres     | Cruza       | Mutación   | Selección de descencientes   |
    |:----------------:|:----------------:|:-----------------------:|:-----------:|:----------:|:----------------------------:|
    | Permutación      | Aleatoria        | Universal estocástica   | Ordenada    | Mezcla     | Brecha generacional          |
+   
 ### Descripción de los métodos de la tabla
     - Representación: Permutación
-        Este tipo de representación 
+        Este tipo de representación utiliza los índices de la lista como indicador del número de la columna (o fila), mientras que el             valor asignado a dicho índice indica el número de la fila (o columna) donde está situada la reina.
+        Un ejemplo de esta representación sería considerando la matriz:
+
+   |      |      |      |      |      |      |      |      |
+   |:----:|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
+   |      |      |      |      |      |      |  1   |      |
+   |      |      |      |   1  |      |      |      |      |
+   |      | 1    |      |      |      |      |      |      |
+   |      |      |      |      |   1  |      |      |      |
+   |      |      |      |      |      |      |      |  1   |
+   | 1    |      |      |      |      |      |      |      |
+   |      |      | 1    |      |      |      |      |      |
+   |      |      |      |      |      |   1  |      |      |
+
+       Su representación con una lista del tipo permutación sería:
+       '[5, 2, 6, 1, 3, 7, 0, 4]'
+        
     - Inicialización: Aleatoria
         Genera a toda la población inicial de forma arbitraria sin condiciones.
     - Selección de padres: Universal estocástica
