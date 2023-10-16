@@ -351,7 +351,7 @@ Considerando un ejemplo particular, tomando la  población:
 ####
 Se obtiene que después de 20 generaciones, el promedio de sus fitness tiende a cero.
 ####
-Para ver la gráfica ingrese a [Gráfica de convergencia](\imagen\gradca.jpg)
+![image](https://github.com/SofiaMendH/Geneticos_y_8_reinas/assets/97262885/ead3f9c1-4e51-4ccc-a1ef-c3194aee7dc1)
 ####
 
 ## Conclusiones
