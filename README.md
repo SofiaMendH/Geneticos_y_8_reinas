@@ -260,8 +260,28 @@ No hay cabida de error en el ciclo debido a que la longitud de _Index_ correspon
 Finalmente, obtenemos al individuo mutado.
 
 #### Selección de descendientes: Brecha generacional
+Se selecciona un número, _k_, estrictamente menor que la cantidad de hijos, _n/2_, y solo esa parte de padres es reemplazada. Justo esa parte corresponde con los _k_ padres con peor _fitness_.
 
+Para ello se define una función llamada _reemplazo_ que admite como único argumento a la población de padres.
+
+Se le asigna al máximo de _all_fitness_ el nombre _i_.
+
+Por medio de un ciclo _while_, mientras m sea mayor o igual que el mínimo de _all_fitness_ se efectúa un ciclo _for_ iterado en los elementos de la población, tal que si el _fitness_ del elemento de la población es igual a _i_ entonces se almacena en una lista llamada _Peores_ind_. En cada iteración se le resta 1 a _i_.
+
+Por otra parte, se define una variable, _k_, que toma un valor arbitrario de _range(25)_ por medio de la función _random.randrange(25)_.
+
+Se hace un ciclo _for_ que itera m en _range(k+1)_, en donde cada elemento de _Peores_ind_ es reemplazado por un elemento de _Hijos_ cuyos índices corresponden al valor _m_ iterado.
+
+La lista resultante es la antigua lista  _Peores_ind_ pero los primeros _k_ elementos son elementos de Hijos.
 
 ### Gráfica de convergencia
-    En la siguiente gráfica se puede observar como el fitness promedio de cada generación se acerca a cero cuando las generaciones            avanzan, respecto a los métodos efetuados para el algoritmo genético.
+La gráfica de convergencia se realizó considerando como métrica el promedio del _fitness_ de cada generación.
+
+Considerando un ejemplo particular, tomando la  población:
+####
+         [[4, 2, 6, 1, 0, 3, 7, 5], [6, 4, 5, 3, 1, 0, 7, 2], [0, 6, 4, 3, 1, 5, 7, 2], [5, 2, 7, 1, 4, 0, 3, 6], [2, 3, 0, 7, 4, 1, 6, 5], [0, 1, 7, 3, 6, 2, 5, 4], [1, 5, 2, 7, 6, 0, 3, 4], [5, 3, 0, 6, 4, 7, 2, 1], [5, 6, 0, 7, 1, 4, 3, 2], [2, 3, 7, 5, 4, 1, 0, 6], [7, 4, 1, 2, 0, 3, 5, 6], [1, 6, 2, 4, 0, 5, 3, 7], [7, 1, 5, 0, 2, 4, 3, 6], [7, 1, 6, 4, 0, 3, 5, 2], [0, 1, 2, 7, 3, 4, 6, 5], [2, 1, 6, 7, 3, 4, 5, 0], [2, 4, 0, 3, 7, 6, 1, 5], [0, 7, 3, 4, 6, 1, 5, 2], [3, 7, 5, 1, 2, 4, 0, 6], [4, 7, 3, 1, 5, 0, 2, 6], [7, 0, 5, 4, 3, 6, 2, 1], [0, 3, 7, 1, 2, 5, 4, 6], [3, 0, 4, 1, 5, 6, 2, 7], [1, 0, 5, 6, 3, 4, 7, 2], [4, 0, 1, 6, 7, 2, 3, 5], [6, 0, 3, 5, 2, 4, 7, 1], [7, 2, 3, 4, 6, 5, 1, 0], [3, 4, 5, 2, 0, 1, 7, 6], [0, 1, 3, 2, 6, 4, 7, 5], [5, 6, 1, 0, 4, 7, 3, 2], [7, 2, 3, 0, 1, 4, 5, 6], [2, 5, 3, 4, 7, 6, 1, 0], [2, 5, 7, 1, 0, 6, 3, 4], [3, 5, 6, 4, 1, 2, 0, 7], [0, 3, 6, 1, 2, 4, 5, 7], [1, 5, 7, 6, 2, 3, 0, 4], [6, 2, 5, 4, 1, 3, 0, 7], [6, 5, 7, 2, 1, 4, 3, 0], [3, 7, 6, 2, 5, 4, 0, 1], [5, 2, 0, 1, 7, 4, 6, 3], [4, 1, 5, 6, 0, 2, 3, 7], [2, 3, 7, 6, 4, 1, 0, 5], [1, 4, 0, 6, 5, 2, 3, 7], [6, 0, 1, 2, 7, 4, 5, 3], [3, 6, 7, 1, 0, 4, 5, 2], [4, 0, 1, 5, 3, 7, 6, 2], [4, 0, 2, 6, 1, 7, 3, 5], [6, 5, 3, 0, 1, 7, 2, 4], [5, 6, 0, 4, 2, 7, 1, 3], [7, 1, 2, 5, 4, 6, 0, 3]]
+####
+Se obtiene que después de 20 generaciones, el promedio de sus fitness tiende a cero.
+
+
     
