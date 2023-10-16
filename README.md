@@ -1,6 +1,18 @@
 # Genéticos_y_8_reinas
 
 ## Introducción
+Un _algoritmo_ es una secuencia pecisa de pasos que nos permite alcanzar un resultado o resolver un problema.
+
+Los pasos necesarios para realizar un algoritmo son:
+1. Análisis del problema.
+2. Diseño del algoritmo para resolverlo.
+3. Verificación del algortimo.
+4. Implementación del algoitmo en algún lenguaje de programación.
+
+###
+        La palabra algoritmo es en honor al matemático árabe Al Khuarismi al que se le atribuye el primer algortimo para la obtención de raíces de una ecuación.
+###
+En particular, un _algoritmo genético_
 
 ## Materiales
 
@@ -167,8 +179,45 @@ Por medio de una lista de comprensión (_del tipo ciclo for_) se agregan en una 
 De esta forma, tendremos en una lista, *Pob*, almacenados a los individuos de la población inicial.
         
 #### Selección de padres: Universal estocástica
-Se da la probabilidad acumulada de distribución para cada miembro de la población denominada por 'a' y un valor 'lamda' que indica la cantidad de miembros a seleccionar. Se inicializan las variables 'i' y 'current_member' en 1. Se toma un valor (flotante) aleatorio 'r' entre 0 y 1/'lamda'. Mientras 'current_member' sea menor o igual que 'lamda' y mientras 'r' sea menor o igual que 'a[i]' (la probabilidad acumulada del miembro i) se selecciona el miembro i y se guarda en una lista 'selecc', luego a 'r' se le suma 1/'lamda' y a 'current_member' se le suma 1. De no cumplirse el segundo while a 'i' se le suma 1.
-Observese que ambos ciclos se detedrán cuando no se cumpla el primer while, es decir cuando 'current_member' sea mayor que 'lamda', ya que significará que se han seleccionado 'lamda' miembros de la población.
+Conceptualmente, el método equivale a hace run giro de una ruleta con 'lamda' espacios equidistantes.
+
+Por ello se define una función llamada _seleccion_.
+
+Dada una lista de probabilidades de selección acumuladas denominada por _acum_prob_ realizada calculando la probabilidad de seleccionar un padre (por medio de la función _fitness_ (o _aptitud_) y guardandolas en una lista _ind_prob_ por medio de una lista de comprensión, del tipo _ciclo for_) y haciendo un proceso similar al explicado anteriormente.
+
+A la variable 'lamda' se le asigna la cantidad de padres a seleccionar, la cual sera _n/2_.
+
+Se inicializan dos variables
+#####
+        current_member=1
+#####
+#####
+        i=1
+#####
+Se toma un número (_flotante_) aleatorio entre 0 y 1/lamda por medio de la función _random.uniform_.
+
+Se realizan dos ciclo _while_ anidados.
+
+Mientras se satisfaga
+#####
+        current_member <= lamda
+#####
+y mientras se satisfaga
+#####
+        r <= acum_prob[i]
+#####
+Se añade en una lista llamada _selec_ el elemento _Pob[current_member]_.
+
+Además se realiza
+#####
+        r = r+(1/lamda)
+#####
+#####
+        current_member=current_member+1
+#####
+De no cumplirse la última condición,  es decir de tener que _r_ rebasa a la probabilidad acumulada del individuo _i_, entonces _i_ se incrementa en 1.
+
+Finalmente resulta una lista de longitud _n/2_, cuyos elementos serán denominados (conceptualmente) por padres. 
         
 #### Cruza: Ordenada
 Este tipo de cruza toma un solo segmento de elementos aleatorio del padre y lo hereda al hijo. En caso de tener espacios vacíos en el hijo, son rellenados por elementos de la madre, heredados de forma ordenada, partiendo después del índice del último elemento heredado por el padre y regresando al primer indice de la madre hasta heredar, en conjunto con el padre, 8 elementos al hijo sin que estos se repitan.
@@ -283,7 +332,14 @@ Considerando un ejemplo particular, tomando la  población:
 ####
 Se obtiene que después de 20 generaciones, el promedio de sus fitness tiende a cero.
 ####
-[Gráfica de convergencia](\imagen\gradca.jpg)
+Para ver la gráfica ingrese a [Gráfica de convergencia](\imagen\gradca.jpg)
 ####
 
-    
+## Conclusiones
+Después de varias iteraciones al algoritmo, se puede observar que el comportamiento de los fitness de cada generación en cada iteración es similar.
+
+La población inicial posee un fitness promedio que ronda entre 5.5 y 4, mientras que el fitness promedio de la generación número 20 ronda entre 3.5 y 2.
+
+Como se puede observar el rango del fitness promedio disminuye mientras las generaciones avanzan.
+
+En general, cada 20 generaciones se presentan como mínimo 3 individuos con solo 1 ataque. Los individuos que no tienen ataques se presentan de forma irregular en las iteraciones de las 20 generaciones, cuando aparecen no suelen revasar los 10.
