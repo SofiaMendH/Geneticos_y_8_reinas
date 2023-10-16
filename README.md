@@ -7,12 +7,29 @@ Los pasos necesarios para realizar un algoritmo son:
 1. Análisis del problema.
 2. Diseño del algoritmo para resolverlo.
 3. Verificación del algortimo.
-4. Implementación del algoitmo en algún lenguaje de programación.
+4. Implementación del algoritmo en algún lenguaje de programación.
 
 ###
-        La palabra algoritmo es en honor al matemático árabe Al Khuarismi al que se le atribuye el primer algortimo para la obtención de raíces de una ecuación.
+        La palabra algoritmo es en honor al matemático árabe Al Khuarismi al que se le atribuye el primer algoritmo para la obtención de raíces de una ecuación.
 ###
-En particular, un _algoritmo genético_
+En particular, un _algoritmo genético_ es una técnica de búsqueda y optimización inspirada en los principios de la evolución biológica. Se utiliza para encontrar soluciones aproximadas o incluso óptimas a problemas complejos, que pueden tener múltiples variables y restricciones. Este enfoque se basa en la idea de que las soluciones más aptas tienen más probabilidades de sobrevivir y transmitir sus características a las siguientes generaciones.
+
+Implementar un algoritmo genético requiere seguir una serie de pasos clave:
+1. Definir la representación del individuo.
+2. Inicialización de la población
+3. Evaluación de la aptitud (_fitness_)
+4. Cruzamiento
+5. Mutación
+6. Reemplazo de la población
+7. Repetir el proceso
+8. Obtener la solución final
+
+En este repositorio se intentará buscar solución al conocido problema de **el juego de las 8 reinas**, el cual fue propuesto por el ajedrecista alemán Max Bezeel en 1848, el cual consiste en poner ocho reinas en el  tablero de ajedrez sin que se amenacen.
+
+En el juego del ajedrez la reina amenaza a aquellas piezas que se encuentren en su misma  fila, columna o diagonal. A partir de esto se define la función _fitness_ la cual contabiliza el número de ataques que tiene un tablero de ajedrez con ocho reinas dispuestas en él.
+
+En el presente texto, y en el código del algoritmo, llamaremos como _individuo_ a cada tablero de ajedrez, el cual se representará por medio de una lista. Además, denominaremos por _población_ al conjunto de individuos a tratar durante el algoritmo.
+
 
 ## Materiales
 
@@ -145,6 +162,8 @@ A continuación se presenta una tabla con los métodos utilizados en el código 
 Esta representación utiliza los índices de la lista como indicador del número de la *columna*, mientras que el valor asignado a dicho índice indica el número de la *fila* donde está situada la reina. 
 
 Por ello es que cada individuo de la población está representado por una lista de tamaño 8, cuyos índices y elementos van del 0 al 7. La decisión de utilizar solo los valores del  0 al 7, y no del 1 al 8, resulta de la forma de enumeración de los índices de las listas en Python. 
+
+Justo por esta representación, no existirán ataques en filas ni en columnas, por lo que la función _fitness_ solo contabilizará los ataques en las diagonales.
 
 Un ejemplo de esta representación sería considerar el individuo dado por
 #####
